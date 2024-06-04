@@ -1,12 +1,15 @@
 import {Link, useNavigate} from 'react-router-dom'
-import {FaSignInAlt, FaUser} from 'react-icons/fa'
+import {FaSignInAlt,FaSignOutAlt, FaUser} from 'react-icons/fa'
 import { useSelector,useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 
 export default function Header() {
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  
   const {user} = useSelector((state)=> state.auth)
+  
   const onLogout = () => {
     dispatch(logout())
     dispatch(reset())
@@ -23,7 +26,7 @@ export default function Header() {
           ? (
             <li>
             <button className='btn' onClick={onLogout}>
-                <FaSignInAlt/>Logout
+                <FaSignOutAlt/>Logout
             </button>
         </li>
           ) 
